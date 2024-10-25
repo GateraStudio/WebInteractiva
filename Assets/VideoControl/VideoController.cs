@@ -79,7 +79,7 @@ public class VideoController : MonoBehaviour
 
     double VideoDuration
     {
-        get { return videoPlayer.clip.length; }
+        get { return videoPlayer.frameCount / videoPlayer.frameRate; }
     }
 
     bool MouseMoved

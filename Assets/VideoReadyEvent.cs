@@ -16,10 +16,14 @@ public class VideoReadyEvent : MonoBehaviour
     void Start()
     {
         player = GetComponent<VideoPlayer>();
+        player.EnableAudioTrack(0, true);
+        player.Prepare();
+        player.prepareCompleted += Prepared;
+        player.Play();
     }
 
     // Update is called once per frame
-    void Update()
+    void Prepared(VideoPlayer source)
     {
         if (player.isPrepared)
         {

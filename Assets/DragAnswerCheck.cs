@@ -19,7 +19,7 @@ public class DragAnswerCheck : BaseAnswerCheck
 
     DragTarget target = null;
 
-    void Start()
+    void Awake()
     {
         target = GetComponentInChildren<DragTarget>();
     }
