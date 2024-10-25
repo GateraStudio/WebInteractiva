@@ -25,10 +25,9 @@ public class VideoReadyEvent : MonoBehaviour
     // Update is called once per frame
     void Prepared(VideoPlayer source)
     {
-        if (player.isPrepared)
-        {
-            onVideoReady.Invoke();
-            enabled = false;
-        }
+        onVideoReady.Invoke();
+        enabled = false;
+
+        player.Play();
     }
 }
