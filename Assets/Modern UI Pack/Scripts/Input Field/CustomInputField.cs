@@ -38,11 +38,13 @@ namespace Michsky.MUIP
         {
             Initialize();
 
-            inputText.onSelect.AddListener(delegate { AnimateIn(); });
-            inputText.onEndEdit.AddListener(delegate { HandleEndEdit(); });
-            inputText.onValueChanged.AddListener(delegate { UpdateState(); });
+            enabled = false;
 
-            UpdateStateInstant();
+            //inputText.onSelect.AddListener(delegate { AnimateIn(); });
+            //inputText.onEndEdit.AddListener(delegate { HandleEndEdit(); });
+            //inputText.onValueChanged.AddListener(delegate { UpdateState(); });
+
+            //UpdateStateInstant();
         }
 
         void OnEnable()
@@ -103,7 +105,7 @@ namespace Michsky.MUIP
 
         public void AnimateOut()
         {
-            if (inputFieldAnimator.gameObject.activeInHierarchy && inputText.text.Length == 0 && isActive)
+            if (inputFieldAnimator.gameObject.activeInHierarchy && isActive)
             {
                 StopCoroutine("DisableAnimator");
                 StartCoroutine("DisableAnimator");

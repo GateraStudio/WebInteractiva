@@ -35,6 +35,9 @@ public class PopQuestion : MonoBehaviour
     protected DOTweenAnimation rightFeedback = null;
 
     [SerializeField]
+    protected ExercisePanelController exercisePanelController = null;
+
+    [SerializeField]
     float answerTime = 5f;
 
     bool displayed = false;
@@ -123,6 +126,7 @@ public class PopQuestion : MonoBehaviour
     protected void ShowQuestion()
     {
         displayTween.DOPlayForward();
+        exercisePanelController.LockPanel();
         displayed = true;
     }
 

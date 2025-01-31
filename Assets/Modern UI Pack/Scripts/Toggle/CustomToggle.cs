@@ -17,13 +17,16 @@ namespace Michsky.MUIP
 
         void Awake()
         {
-            if (toggleObject == null) { toggleObject = gameObject.GetComponent<Toggle>(); }
-            if (toggleAnimator == null) { toggleAnimator = toggleObject.GetComponent<Animator>(); }
-            if (invokeOnAwake == true) { toggleObject.onValueChanged.Invoke(toggleObject.isOn); }
+            toggleObject = gameObject.GetComponent<Toggle>(); 
+            toggleAnimator = toggleObject.GetComponent<Animator>(); 
+            toggleObject.onValueChanged.Invoke(toggleObject.isOn); 
 
             toggleObject.onValueChanged.AddListener(UpdateState);
             UpdateState();
             isInitialized = true;
+
+            if (toggleObject.isOn) { toggleAnimator.Play("On Instant"); }
+            else { toggleAnimator.Play("Off Instant"); }
         }
 
         void OnEnable()

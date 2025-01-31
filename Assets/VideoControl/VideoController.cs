@@ -70,6 +70,9 @@ public class VideoController : MonoBehaviour
     bool replayShown = false;
     bool controlsEnabled = true;
 
+    public bool IsPaused {  get { return paused; } }
+
+
     private void Start()
     {
         videoPlayer.loopPointReached += OnVideoEnd;
@@ -185,6 +188,18 @@ public class VideoController : MonoBehaviour
             videoPlayer.Pause();
             videoPlayer.time = controllerSlider.value * VideoDuration;
         }
+    }
+
+    public void Pause(bool showTween)
+    {
+        if (!paused)
+            TogglePause(showTween);
+    }
+
+    public void Unpause(bool showTween)
+    {
+        if (paused)
+            TogglePause(showTween);
     }
 
     public void TogglePause(bool showTween)
